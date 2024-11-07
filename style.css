@@ -8,7 +8,6 @@ body {
   font-size: 1.2rem;
   font-family: 'Work Sans', sans-serif;
   min-height: 4000px;
-  overflow-x: hidden;
 }
 
 .hero::before {
@@ -466,36 +465,6 @@ footer li {
   }
 }
 
-/* android */
-@media (max-width: 600px) {
-  html {
-    font-size: 62%;
-  }
-
-  .simply-countdown>.simply-section {
-    padding: 47px;
-    margin: 5px;
-  }
-
-  .timeline li .timeline-image {
-    width: 82px;
-    height: 82px;
-  }
-
-  .timeline li .timeline-panel {
-    width: 65%;
-    transform: translateX(-20px);
-  }
-
-  .timeline li .timeline-panel::before {
-    top: 32px;
-  }
-
-  .timeline li .timeline-panel::after {
-    top: 33px;
-  }
-}
-
 /* mobile phone */
 @media (max-width: 576px) {
   html {
@@ -523,5 +492,10 @@ footer li {
 
   .timeline li .timeline-panel::after {
     top: 31px;
+  }
+
+  .mynavbar {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: none;
   }
 }
