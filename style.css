@@ -381,6 +381,7 @@ footer li {
   from {
     transform: rotate(0);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -400,7 +401,7 @@ footer li {
     font-size: 75%;
   }
 
-  .simply-countdown > .simply-section {
+  .simply-countdown>.simply-section {
     padding: 70px;
   }
 
@@ -444,7 +445,7 @@ footer li {
     font-size: 65%;
   }
 
-  .simply-countdown > .simply-section {
+  .simply-countdown>.simply-section {
     padding: 60px;
     margin: 5px;
   }
@@ -464,13 +465,43 @@ footer li {
   }
 }
 
+/* android */
+@media (max-width: 600px) {
+  html {
+    font-size: 62%;
+  }
+
+  .simply-countdown>.simply-section {
+    padding: 47px;
+    margin: 5px;
+  }
+
+  .timeline li .timeline-image {
+    width: 82px;
+    height: 82px;
+  }
+
+  .timeline li .timeline-panel {
+    width: 65%;
+    transform: translateX(-20px);
+  }
+
+  .timeline li .timeline-panel::before {
+    top: 32px;
+  }
+
+  .timeline li .timeline-panel::after {
+    top: 33px;
+  }
+}
+
 /* mobile phone */
 @media (max-width: 576px) {
   html {
     font-size: 60%;
   }
 
-  .simply-countdown > .simply-section {
+  .simply-countdown>.simply-section {
     padding: 45px;
     margin: 3px;
   }
