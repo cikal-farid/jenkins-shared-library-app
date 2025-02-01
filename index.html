@@ -519,16 +519,33 @@
   <script>
     function copyToClipboard() {
       var bankku = document.getElementById('bankKu');
-      var bankmu = document.getElementById('bankMu');
       var range = document.createRange();
       range.selectNode(bankku);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+
+      try {
+        document.execCommand('copy');
+        alert('Nomor rekening berhasil disalin ke clipboard!');
+      } catch (err) {
+        console.error('Gagal menyalin teks: ', err);
+      }
+
+      window.getSelection().removeAllRanges();
+    }
+  </script>
+
+  <script>
+    function copyToClipboard() {
+      var bankmu = document.getElementById('bankMu');
+      var range = document.createRange();
       range.selectNode(bankmu);
       window.getSelection().removeAllRanges();
       window.getSelection().addRange(range);
 
       try {
         document.execCommand('copy');
-        alert('Nomor surat berhasil disalin ke clipboard!');
+        alert('Nomor rekening berhasil disalin ke clipboard!');
       } catch (err) {
         console.error('Gagal menyalin teks: ', err);
       }
