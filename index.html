@@ -97,7 +97,7 @@
             </div>
             <div class="col-8">
               <h3>Novitasari</h3>
-              <p>Putri ketiga dari Bapak Sarkim <br> dan <br> Ibu Acih</p>
+              <p>Putri ketiga dari Bapak Sarkim <br> dan <br> Ibu Asih</p>
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@
             peta</a>
           <p class="description mt-3">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba di tujuan namun
             tidak
-            ada tanda-tanda sedang dilangsungkan pernikahan, boleh jadi Anda salah jadwal, atau salah tempat.</p>
+            ada tanda-tanda sedang dilangsungkan acara, boleh jadi Anda salah jadwal, atau salah tempat.</p>
         </div>
       </div>
 
@@ -176,8 +176,11 @@
                   <span>05 Agustus 2013</span>
                 </div>
                 <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, modi autem? Commodi autem quo quia?
-                  </p>
+                  <p>Berawal dari huru-hara persiapan MOS (Masa Orientasi Siswa) masuk ke SMAN 1 Luragung. Kita
+                    dipertemukan pertama kali di rumah kerabat cikal. Dan diperkenalkan satu sama lain. Disclaimer yang
+                    masuk ke SMAN 1 Luragung hanya 3 orang dari desa Bendungan yaitu Cikal, Aku, dan Tiara.</p>
+                  <p>Karena Cikal ini murid pindahan dari Palembang jadi belum ada teman selain kita. Disitulah kita
+                    mulai dekat, karena berangkat dan pulang selalu bareng (bertiga) naik angkutan umum (angkot).</p>
                 </div>
               </div>
 
@@ -348,20 +351,20 @@
         <div class="col-md-6">
           <ul class="list-group">
             <li class="list-group-item">
-              <div class="fw-bold">BCA</div>
-              5775686259 - CIKAL MUHAMMAD FARID AL GIFARI
+              <div class="fw-bold" id="bankKu">5775686259
+                <button class="btn btn-outline-secondary btn-sm ms-3" onclick="copyToClipboard()">
+                  <i class="bi bi-clipboard me-1"></i> Salin
+                </button>
+              </div>
+              BCA - CIKAL MUHAMMAD FARID AL GIFARI
             </li>
             <li class="list-group-item">
-              <div class="fw-bold">MANDIRI</div>
-              1560017224520 - Cikal Muhammad Farid
-            </li>
-            <li class="list-group-item">
-              <div class="fw-bold">MANDIRI</div>
-              1340021927693 - NOVITASARI
-            </li>
-            <li class="list-group-item">
-              <div class="fw-bold">BRI</div>
-              030201016137534 - NOVITASARI
+              <div class="fw-bold" id="bankMu">1340021927693
+                <button class="btn btn-outline-secondary btn-sm ms-3" onclick="copyToClipboard()">
+                  <i class="bi bi-clipboard me-1"></i> Salin
+                </button>
+              </div>
+              MANDIRI - NOVITASARI
             </li>
           </ul>
           <br />
@@ -511,6 +514,27 @@
     namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
 
     document.querySelector('#nama').value = nama;
+  </script>
+
+  <script>
+    function copyToClipboard() {
+      var bankku = document.getElementById('bankKu');
+      var bankmu = document.getElementById('bankMu');
+      var range = document.createRange();
+      range.selectNode(bankku);
+      range.selectNode(bankmu);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+
+      try {
+        document.execCommand('copy');
+        alert('Nomor surat berhasil disalin ke clipboard!');
+      } catch (err) {
+        console.error('Gagal menyalin teks: ', err);
+      }
+
+      window.getSelection().removeAllRanges();
+    }
   </script>
 </body>
 
