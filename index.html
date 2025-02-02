@@ -352,7 +352,7 @@
           <ul class="list-group">
             <li class="list-group-item">
               <div class="fw-bold" id="bankKu">5775686259
-                <button class="btn btn-outline-secondary btn-sm ms-3" onclick="copyToClipboard()">
+                <button class="btn btn-outline-secondary btn-sm ms-3" onclick="copyToClipboard('bankKu')">
                   <i class="bi bi-clipboard me-1"></i> Salin
                 </button>
               </div>
@@ -360,7 +360,7 @@
             </li>
             <li class="list-group-item">
               <div class="fw-bold" id="bankMu">1340021927693
-                <button class="btn btn-outline-secondary btn-sm ms-3" onclick="copyToClipboard()">
+                <button class="btn btn-outline-secondary btn-sm ms-3" onclick="copyToClipboard('bankMu')">
                   <i class="bi bi-clipboard me-1"></i> Salin
                 </button>
               </div>
@@ -517,35 +517,16 @@
   </script>
 
   <script>
-    function copyToClipboard() {
-      var bankku = document.getElementById('bankKu');
+    function copyToClipboard(elementId) {
+      var element = document.getElementById(elementId);
       var range = document.createRange();
-      range.selectNode(bankku);
+      range.selectNode(element);
       window.getSelection().removeAllRanges();
       window.getSelection().addRange(range);
 
       try {
         document.execCommand('copy');
-        alert('Nomor rekening cikal berhasil disalin ke clipboard!');
-      } catch (err) {
-        console.error('Gagal menyalin teks: ', err);
-      }
-
-      window.getSelection().removeAllRanges();
-    }
-  </script>
-
-  <script>
-    function copyToClipboard() {
-      var bankmu = document.getElementById('bankMu');
-      var range = document.createRange();
-      range.selectNode(bankmu);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-
-      try {
-        document.execCommand('copy');
-        alert('Nomor rekening novi berhasil disalin ke clipboard!');
+        alert('Nomor rekening berhasil disalin ke clipboard!');
       } catch (err) {
         console.error('Gagal menyalin teks: ', err);
       }
