@@ -13,6 +13,13 @@ pipeline {
         stage ("Test") {
             steps {
                 script {
+
+                    def data = [
+                        "firstName": "Cikal Muhammad Farid",
+                        "lastName": "Al Gifari"
+                    ]
+                    writeJSON(file: "data.json", json: data)
+                    
                     // Cek apakah file index.html ada
                     def fileExists = fileExists('index.html')
                     if (fileExists) {
