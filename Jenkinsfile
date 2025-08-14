@@ -39,9 +39,8 @@ pipeline {
                         }
                     } else {
                         error 'File index.html tidak ditemukan.'
+                        }
                     }
-                }
-            }
             }
         }
         stage ("Deploy") {
