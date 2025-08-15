@@ -13,7 +13,7 @@ pipeline {
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
         text(name: "DESCRIPTION", defaultValue: "Guest", description: "Tell me about you")
-        booleanParam(name: "DEPLOY", defaultValue: false, description: "Need to Deploy?")
+        booleanParam(name: "DEPLOY", defaultValue: true, description: "Need to Deploy?")
         choice(name: "SOSIAL_MEDIA", choices: ['Instagram', 'Facebook', 'Twitter'], description: "Which Sosial Media?")
         password(name: "SECRET", defaultValue: "", description: "Encrypt Key")
     }
@@ -113,6 +113,18 @@ pipeline {
                 echo("Deploy to ${TARGET_ENV}")
             }
         }
+        
+        stage ("Release") {
+            when {
+                expression {
+                    return params.DEPLOY
+                }
+            }
+        }
+        agent { label "linux && java17" }
+            steps {
+                echo("Release it")
+            }
     }
 
     post {
