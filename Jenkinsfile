@@ -22,11 +22,19 @@ pipeline {
     stages {
 
         stage("Preparation") {
-            agent { label "linux && java17" }
-            stages {
-                stage("Prepare Java") {
+            parallel {
+                stages {
+                stage("Prepare Cikal") {
+                    agent { label "linux && java17" }
                     steps {
-                        echo("Prepare Java")
+                        echo("Prepare Cikal")
+                    }
+                }
+                stage("Prepare Novi") {
+                    agent { label "linux && java17" }
+                    steps {
+                        echo("Prepare Cikal")
+                        }
                     }
                 }
             }
