@@ -20,6 +20,30 @@ pipeline {
     }
     
     stages {
+
+        stage("OS Setup") {
+            matrix {
+                axes {
+                    axis {
+                        name "OS"
+                        values "linux", "windows", "mac"
+                    }
+                    axis {
+                        name "ARC"
+                        values "32", "64"
+                    }
+                }
+            }
+            stages {
+                stage("OS Setup") {
+                    agent { label "linux && java17" }
+                    steps {
+                        echo("Setup ${OS} ${ARC}")
+                    }
+                }
+            }
+        }
+        
         stage("Preparation") {
             parallel {
                 stage("Prepare Cikal") {
