@@ -20,6 +20,20 @@ pipeline {
     }
     
     stages {
+        stage ("Parameter"){
+            agent {
+        node {
+            label "linux && java17"
+        }
+                steps {
+                    echo "Hello ${params.NAME}"
+                    echo "You description is ${params.DESCRIPTION}"
+                    echo "Your sosial media is ${params.SOSIAL_MEDIA}"
+                    echo "Need to deploy ${params.DEPLOY}"
+                    echo "Your secret is ${params.SECRET}"
+                }
+    }
+        }
         stage ("Prepare") {
             environment{
                 APP = credentials("cikal_cakep")
