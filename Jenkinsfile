@@ -6,9 +6,17 @@ pipeline {
         EMAIL = "cikalfarid@gmail.com"
     }
 
+    parameters {
+        string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
+        text(name: "DESCRIPTION", defaultValue: "Guest", description: "Tell me about you")
+        booleanParam(name: "DEPLOY", defaultValue: false, description: "Need to Deploy?")
+        choice(name: "SOSIAL_MEDIA", choices: ['Instagram', 'Facebook', 'Twitter'], description: "Which Sosial Media?")
+        password(name: "SECRET", defaultValue: "", description: "Encrypt Key")
+    }
+
     options {
         disableConcurrentBuilds()
-        timeout(time: 5, unit: 'MINUTES')
+        timeout(time: 10, unit: 'MINUTES')
     }
     
     stages {
