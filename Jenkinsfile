@@ -20,21 +20,18 @@ pipeline {
     }
     
     stages {
-
         stage("Preparation") {
             parallel {
-                stages {
                 stage("Prepare Cikal") {
                     agent { label "linux && java17" }
                     steps {
-                        echo("Prepare Cikal")
+                        echo "Prepare Cikal"
                     }
                 }
                 stage("Prepare Novi") {
                     agent { label "linux && java17" }
                     steps {
-                        echo("Prepare Cikal")
-                        }
+                        echo "Prepare Novi"
                     }
                 }
             }
