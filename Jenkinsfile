@@ -6,9 +6,9 @@ pipeline {
         EMAIL = "cikalfarid@gmail.com"
     }
 
-    triggers {
-        pollSCM("*/5 * * * *")
-    }
+    // triggers {
+    //     pollSCM("*/5 * * * *")
+    // }
 
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
@@ -100,6 +100,14 @@ pipeline {
         }
 
         stage("Deploy") {
+            input {
+                message "Can we deploy?"
+                ok "Yes of course"
+                submitter "cikal"
+                parameters {
+                    choice(name: "TARGET_ENV", choices: ['DEV', 'QA', 'PROD'], description: "Which Environment?")
+                }
+            }
             agent { label "linux && java17" }
             steps {
                 echo "Hello Deploy"
