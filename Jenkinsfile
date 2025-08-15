@@ -110,8 +110,7 @@ pipeline {
             }
             agent { label "linux && java17" }
             steps {
-                echo "Hello Deploy"
-                sleep(5)
+                echo("Deploy to ${TARGET_ENV}")
             }
         }
     }
