@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent none // Tidak ada agen default
 
     environment {
         AUTHOR = "Cikal Muhammad Farid Al Gifari"
@@ -20,59 +20,44 @@ pipeline {
     }
     
     stages {
-        stage ("Parameter"){
-            agent {
-        node {
-            label "linux && java17"
+        stage("Parameter") {
+            agent { label "linux && java17" }
+            steps {
+                echo "Hello ${params.NAME}"
+                echo "Your description is: ${params.DESCRIPTION}"
+                echo "Your social media is: ${params.SOSIAL_MEDIA}"
+                echo "Need to deploy: ${params.DEPLOY}"
+                echo "Your secret is: ${params.SECRET}"
+            }
         }
-                steps {
-                    echo "Hello ${params.NAME}"
-                    echo "You description is ${params.DESCRIPTION}"
-                    echo "Your sosial media is ${params.SOSIAL_MEDIA}"
-                    echo "Need to deploy ${params.DEPLOY}"
-                    echo "Your secret is ${params.SECRET}"
-                }
-    }
-        }
-        stage ("Prepare") {
-            environment{
+
+        stage("Prepare") {
+            agent { label "linux && java17" }
+            environment {
                 APP = credentials("cikal_cakep")
             }
-            agent {
-        node {
-            label "linux && java17"
-        }
-    }
             steps {
-                echo("Author ${AUTHOR}")
-                echo("Email ${EMAIL}")
-                echo("Start Job : ${env.JOB_NAME}")
-                echo("Start Build : ${env.BUILD_NUMBER}")
-                echo("Branch Name : ${env.BRANCH_NAME}")
-                echo("Branch Name : ${env.BRANCH_NAME}")
-                echo("App User : ${APP_USR}")
-                sh('echo "App Password : $APP_PSW" > "rahasia.txt"')
-            }
-        }      
-        stage ("Build") {
-            agent {
-        node {
-            label "linux && java17"
-        }
-    }
-            steps {
-                echo("Hello Build")
+                echo "Author: ${AUTHOR}"
+                echo "Email: ${EMAIL}"
+                echo "Start Job: ${env.JOB_NAME}"
+                echo "Start Build: ${env.BUILD_NUMBER}"
+                echo "Branch Name: ${env.BRANCH_NAME}"
+                echo "App User: ${APP_USR}"
+                sh 'echo "App Password: $APP_PSW" > "rahasia.txt"'
             }
         }
-        stage ("Test") {
-            agent {
-        node {
-            label "linux && java17"
+
+        stage("Build") {
+            agent { label "linux && java17" }
+            steps {
+                echo "Hello Build"
+            }
         }
-    }
+
+        stage("Test") {
+            agent { label "linux && java17" }
             steps {
                 script {
-
                     def data = [
                         "firstName": "Cikal Muhammad Farid",
                         "lastName": "Al Gifari"
@@ -105,18 +90,15 @@ pipeline {
                         }
                     } else {
                         error 'File index.html tidak ditemukan.'
-                        }
                     }
+                }
             }
         }
-        stage ("Deploy") {
-            agent {
-        node {
-            label "linux && java17"
-        }
-    }
+
+        stage("Deploy") {
+            agent { label "linux && java17" }
             steps {
-                echo("Hello Deploy")
+                echo "Hello Deploy"
                 sleep(5)
             }
         }
@@ -124,17 +106,16 @@ pipeline {
 
     post {
         always {
-            echo "I, will always say Hello again!"
+            echo "I will always say Hello again!"
         }
         success {
             echo "Yeay, Sukses"
         }
         failure {
-            echo "Oh, no ada error guys"
+            echo "Oh no, ada error guys"
         }
         cleanup {
             echo "Don't care success or error"
         }
     }
-    
 }
