@@ -33,12 +33,12 @@ pipeline {
                         values "32", "64"
                     }
                 }
-            }
-            stages {
+                stages {
                 stage("OS Setup") {
                     agent { label "linux && java17" }
                     steps {
                         echo("Setup ${OS} ${ARC}")
+                        }
                     }
                 }
             }
