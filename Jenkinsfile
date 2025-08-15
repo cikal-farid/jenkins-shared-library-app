@@ -5,6 +5,11 @@ pipeline {
         AUTHOR = "Cikal Muhammad Farid Al Gifari"
         EMAIL = "cikalfarid@gmail.com"
     }
+
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 5, unit: 'MINUTES')
+    }
     
     stages {
         stage ("Prepare") {
