@@ -27,7 +27,7 @@ pipeline {
                 echo "Your description is: ${params.DESCRIPTION}"
                 echo "Your social media is: ${params.SOSIAL_MEDIA}"
                 echo "Need to deploy: ${params.DEPLOY}"
-                sh 'echo "Your secret is: ${params.SECRET}" > "rahasia.txt"'
+                sh "echo 'Your secret is: ${params.SECRET}' > 'rahasia.txt'" // Perbaikan di sini
             }
         }
 
@@ -43,7 +43,7 @@ pipeline {
                 echo "Start Build: ${env.BUILD_NUMBER}"
                 echo "Branch Name: ${env.BRANCH_NAME}"
                 echo "App User: ${APP_USR}"
-                sh 'echo "App Password: $APP_PSW" > "rahasia.txt"'
+                sh "echo 'App Password: \$APP_PSW' > 'rahasia.txt'" // Perbaikan di sini
             }
         }
 
