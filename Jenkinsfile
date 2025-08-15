@@ -6,10 +6,6 @@ pipeline {
         EMAIL = "cikalfarid@gmail.com"
     }
 
-    // triggers {
-    //     pollSCM("*/5 * * * *")
-    // }
-
     parameters {
         string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
         text(name: "DESCRIPTION", defaultValue: "Guest", description: "Tell me about you")
@@ -31,7 +27,7 @@ pipeline {
                 echo "Your description is: ${params.DESCRIPTION}"
                 echo "Your social media is: ${params.SOSIAL_MEDIA}"
                 echo "Need to deploy: ${params.DEPLOY}"
-                sh 'echo "Your secret is: $params.SECRET" > "rahasia.txt"'
+                sh 'echo "Your secret is: ${params.SECRET}" > "rahasia.txt"'
             }
         }
 
@@ -100,6 +96,7 @@ pipeline {
         }
 
         stage("Deploy") {
+            agent { label "linux && java17" }
             input {
                 message "Can we deploy?"
                 ok "Yes of course"
@@ -108,23 +105,22 @@ pipeline {
                     choice(name: "TARGET_ENV", choices: ['DEV', 'QA', 'PROD'], description: "Which Environment?")
                 }
             }
-            agent { label "linux && java17" }
             steps {
-                echo("Deploy to ${TARGET_ENV}")
+                echo "Deploy to ${params.TARGET_ENV}"
             }
         }
         
-        stage ("Release") {
+        stage("Release") {
+            agent { label "linux && java17" }
             when {
                 expression {
                     return params.DEPLOY
                 }
             }
-        }
-        agent { label "linux && java17" }
             steps {
-                echo("Release it")
+                echo "Release it"
             }
+        }
     }
 
     post {
