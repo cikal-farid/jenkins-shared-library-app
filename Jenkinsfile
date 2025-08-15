@@ -8,6 +8,9 @@ pipeline {
     
     stages {
         stage ("Prepare") {
+            environment{
+                APP = credentials("cikal_cakep")
+            }
             agent {
         node {
             label "linux && java17"
@@ -19,6 +22,9 @@ pipeline {
                 echo("Start Job : ${env.JOB_NAME}")
                 echo("Start Build : ${env.BUILD_NUMBER}")
                 echo("Branch Name : ${env.BRANCH_NAME}")
+                echo("Branch Name : ${env.BRANCH_NAME}")
+                echo("App User : ${APP_USR}")
+                sh('echo "App Password : $APP_PSW" > "rahasia.txt"')
             }
         }      
         stage ("Build") {
