@@ -20,6 +20,18 @@ pipeline {
     }
     
     stages {
+
+        stage("Preparation") {
+            agent { label "linux && java17" }
+            stages {
+                stage("Prepare Java") {
+                    steps {
+                        echo("Prepare Java")
+                    }
+                }
+            }
+        }
+        
         stage("Parameter") {
             agent { label "linux && java17" }
             steps {
