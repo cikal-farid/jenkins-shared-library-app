@@ -27,7 +27,7 @@ pipeline {
                 echo "Your description is: ${params.DESCRIPTION}"
                 echo "Your social media is: ${params.SOSIAL_MEDIA}"
                 echo "Need to deploy: ${params.DEPLOY}"
-                echo "Your secret is: ${params.SECRET}"
+                sh 'echo "Your secret is: $params.SECRET" > "rahasia.txt"'
             }
         }
 
