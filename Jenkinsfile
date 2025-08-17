@@ -5,6 +5,13 @@ import cikalcakep.jenkins.Output
 pipeline {
     agent any
     stages {
+        stage("HTML Build") {
+            steps {
+                script {
+                    html('test')
+                }
+            }
+        }
         stage("Global Variable") {
             steps {
                 script {
