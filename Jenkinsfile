@@ -5,14 +5,14 @@ import cikalcakep.jenkins.Output;
 pipeline {
     agent any
     stages {
-        stage("Hello Groovy") {
-            steps {
-                script {
-                    // Memanggil metode hello dari kelas Output
-                    Output.hello(this, "Groovy")
-                }
-            }
-        }
+        // stage("Hello Groovy") {
+        //     steps {
+        //         script {
+        //             // Memanggil metode hello dari kelas Output
+        //             Output.hello(this, "Groovy")
+        //         }
+        //     }
+        // }
         stage("Hello World") {
             steps {
                 script {
