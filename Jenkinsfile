@@ -14,15 +14,15 @@ pipeline {
         stage("Setup Tools") {
             steps {
                 sh '''
-                    echo "🔍 Checking if htmllint is installed..."
-                    if ! command -v htmllint >/dev/null 2>&1; then
-                      echo "⚡ Installing htmllint..."
-                      npm install -g htmllint
+                    echo "🔍 Checking if htmlhint is installed..."
+                    if ! command -v htmlhint >/dev/null 2>&1; then
+                      echo "⚡ Installing htmlhint..."
+                      npm install -g htmlhint
                     else
-                      echo "✅ htmllint already installed"
+                      echo "✅ htmlhint already installed"
                     fi
 
-                    echo "📍 htmllint global bin dir: $(npm bin -g)"
+                    echo "📍 htmlhint global bin dir: $(npm bin -g)"
                     ls -l $(npm bin -g) || true
                 '''
             }
@@ -31,7 +31,7 @@ pipeline {
         stage("HTML Build") {
             steps {
                 script {
-                    // Jalankan html.sh dengan PATH yang sudah ditambahkan npm bin -g
+                    // Jalankan html.sh dengan PATH yg sudah ditambahkan npm bin -g
                     sh '''
                         export PATH=$(npm bin -g):$PATH
                         chmod +x ./html.sh

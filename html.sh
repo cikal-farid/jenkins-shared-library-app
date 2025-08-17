@@ -3,8 +3,7 @@
 # Fungsi untuk menguji index.html
 function test_html() {
     echo "Testing index.html..."
-    # Jalankan perintah untuk menguji index.html di sini
-    htmllint dist/index.html
+    htmlhint dist/index.html
 }
 
 # Periksa argumen yang diberikan
