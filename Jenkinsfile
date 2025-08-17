@@ -8,6 +8,7 @@ pipeline {
         stage("Hello Groovy") {
             steps {
                 script {
+                    // Memanggil metode hello dari kelas Output
                     Output.hello("Groovy")
                 }
             }
