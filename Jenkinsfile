@@ -5,6 +5,14 @@ import cikalcakep.jenkins.Output
 pipeline {
     agent any
     stages {
+        stage("Global Variable") {
+            steps {
+                script {
+                    echo(author.myname())
+                    echo(author.mywife())
+                }
+            }
+        }
         stage("Hello Groovy") {
             steps {
                 script {
