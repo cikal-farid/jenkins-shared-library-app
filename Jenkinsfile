@@ -9,14 +9,15 @@ pipeline {
             steps {
                 script {
                     // Memanggil metode hello dari kelas Output
-                    Output.hello(this, "Groovy")
+                    Output.hello("Groovy")
                 }
             }
         }
         stage("Hello World") {
             steps {
                 script {
-                    hello.world()
+                    // Menggunakan langkah echo untuk mencetak "Hello World"
+                    echo "Hello World"
                 }
             }
         }
