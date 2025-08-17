@@ -5,15 +5,15 @@
 pipeline {
     agent any
     stages {
-        stage("Hello Groovy") {
-            steps {
-                script {
-                    // Menggunakan kelas dari pustaka bersama
-                    def output = new Output()
-                    output.someMethod() // Ganti dengan metode yang sesuai
-                }
-            }
-        }
+        // stage("Hello Groovy") {
+        //     steps {
+        //         script {
+        //             // Menggunakan kelas dari pustaka bersama
+        //             def output = new Output()
+        //             output.someMethod() // Ganti dengan metode yang sesuai
+        //         }
+        //     }
+        // }
         stage("Hello World") {
             steps {
                 script {
