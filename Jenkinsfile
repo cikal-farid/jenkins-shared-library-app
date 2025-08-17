@@ -11,6 +11,18 @@ pipeline {
     }
 
     stages {
+
+        stage("Hello Person") {
+            steps {
+                script {
+                    hello.person([
+                        firstName: "Cikal Muhammad Farid"
+                        lastName: "Al Gifari"
+                    ])
+                }
+            }
+        }
+
         stage("Setup Tools") {
             steps {
                 sh '''
