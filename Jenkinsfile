@@ -1,6 +1,6 @@
 @Library("shared-library-jenkins-cikal@v1.0") _
 
-import cikalcakep.jenkins.Output;
+import src.cikalcakep.jenkins.Output;
 
 pipeline {
     agent any
