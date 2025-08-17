@@ -1,6 +1,6 @@
-@Library("shared-library-jenkins-cikal") _
+@Library("shared-library-jenkins-cikal@v1.0") _
 
-import cikalcakep.jenkins.Output;
+import cikalcakep.jenkins.Output
 
 pipeline {
     agent any
@@ -8,8 +8,9 @@ pipeline {
         stage("Hello Groovy") {
             steps {
                 script {
-                    // Memanggil metode hello dari kelas Output
-                    Output.hello("Groovy")
+                    // Menggunakan kelas dari pustaka bersama
+                    def output = new Output()
+                    output.someMethod() // Ganti dengan metode yang sesuai
                 }
             }
         }
