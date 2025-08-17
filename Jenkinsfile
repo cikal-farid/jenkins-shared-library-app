@@ -6,8 +6,8 @@ pipeline {
     agent any
 
     environment {
-        // pastikan /usr/local/bin ikut di PATH
-        PATH = "/usr/local/bin:$PATH"
+        // Tambahkan npm global bin ke PATH
+        PATH = "${PATH}:${WORKSPACE}/.npm-global/bin:/usr/local/bin:/usr/bin"
     }
 
     stages {
@@ -22,7 +22,8 @@ pipeline {
                       echo "✅ htmllint already installed"
                     fi
 
-                    echo "📍 htmllint location: $(which htmllint)"
+                    echo "📍 htmllint global bin dir: $(npm bin -g)"
+                    ls -l $(npm bin -g) || true
                 '''
             }
         }
@@ -30,8 +31,12 @@ pipeline {
         stage("HTML Build") {
             steps {
                 script {
-                    // ini akan jalanin ./html.sh test
-                    html('test')
+                    // Jalankan html.sh dengan PATH yang sudah ditambahkan npm bin -g
+                    sh '''
+                        export PATH=$(npm bin -g):$PATH
+                        chmod +x ./html.sh
+                        ./html.sh test
+                    '''
                 }
             }
         }
