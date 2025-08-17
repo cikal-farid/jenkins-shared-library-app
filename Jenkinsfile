@@ -1,4 +1,4 @@
-@Library("shared-library-jenkins-cikal") _
+@Library("shared-library-jenkins-cikal@main") _
 
 import cikalcakep.jenkins.Output
 
@@ -8,8 +8,7 @@ pipeline {
         stage("Hello Groovy") {
             steps {
                 script {
-                    def output = new Output()
-                    output.someMethod() // Pastikan metode ini ada di kelas Output
+                    Output.hello("Groovy")
                 }
             }
         }
