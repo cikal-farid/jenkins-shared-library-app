@@ -5,6 +5,11 @@ import cikalcakep.jenkins.Output
 pipeline {
     agent any
 
+    environment {
+        // pastikan /usr/local/bin ikut di PATH
+        PATH = "/usr/local/bin:$PATH"
+    }
+
     stages {
         stage("Setup Tools") {
             steps {
@@ -16,6 +21,8 @@ pipeline {
                     else
                       echo "✅ htmllint already installed"
                     fi
+
+                    echo "📍 htmllint location: $(which htmllint)"
                 '''
             }
         }
@@ -23,7 +30,7 @@ pipeline {
         stage("HTML Build") {
             steps {
                 script {
-                    // jalankan html.sh dengan parameter "test"
+                    // ini akan jalanin ./html.sh test
                     html('test')
                 }
             }
