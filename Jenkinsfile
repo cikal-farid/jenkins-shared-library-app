@@ -5,5 +5,5 @@
 // cikalPipeline()
 
 kondisiPipeline([
-    type: "salah"
+    type: "html"
 ])
