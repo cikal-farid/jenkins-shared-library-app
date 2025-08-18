@@ -2,4 +2,8 @@
 
 // import cikalcakep.jenkins.Output
 
-cikalPipeline()
+// cikalPipeline()
+
+kondisiPipeline([
+    type: "html"
+])
