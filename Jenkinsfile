@@ -2,4 +2,4 @@
 
 // import cikalcakep.jenkins.Output
 
-htmlPipeline()
+cikalPipeline()
